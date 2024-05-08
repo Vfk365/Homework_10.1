@@ -5,7 +5,7 @@ def mask_account_cart(number_string: str) -> str:
     """Функция получает строку и маскирует номер карты или счета"""
     if len(number_string.split()[-1]) == 16:
         new_number = get_mask_card(number_string.split()[-1])
-        result = f"{number_string[:-15]}{new_number}"
+        result = f"{number_string[:-16]}{new_number}"
         return result
     elif len(number_string.split()[-1]) == 20:
         new_number = get_mask_account(number_string.split()[-1])

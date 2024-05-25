@@ -1,6 +1,5 @@
 import pytest
-
-from src.widget import mask_account_cart, get_new_data
+from src.widget import get_new_data, mask_account_cart
 
 
 @pytest.mark.parametrize(
@@ -16,7 +15,7 @@ from src.widget import mask_account_cart, get_new_data
         ("Счет 73654108430135874305", "Счет **4305"),
     ],
 )
-def test_mask_account_cart(number_str, result):
+def test_mask_account_cart(number_str: str, result: str) -> None:
     assert mask_account_cart(number_str) == result
 
 
@@ -28,5 +27,5 @@ def test_mask_account_cart(number_str, result):
         ("2018-06-30T02:08:58.4255722", "30.06.2018"),
     ],
 )
-def test_get_new_data(old_data, result):
+def test_get_new_data(old_data: str, result: str) -> None:
     assert get_new_data(old_data) == result

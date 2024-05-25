@@ -2,7 +2,7 @@ import pytest
 
 
 @pytest.fixture
-def list_dict():
+def list_dict() -> list[dict]:
     return [
         {"id": 41428829, "state": "EXECUTED", "date": "2019-07-0318:35:29.512364"},
         {"id": 615064591, "state": "CANCELED", "date": "2018-10-14T08:21:33.419441"},

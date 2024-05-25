@@ -1,6 +1,5 @@
 import pytest
-
-from src.masks import get_mask_card, get_mask_account
+from src.masks import get_mask_account, get_mask_card
 
 
 @pytest.mark.parametrize(
@@ -13,7 +12,7 @@ from src.masks import get_mask_card, get_mask_account
         ("5999414228426353", "5999 41** **** 6353"),
     ],
 )
-def test_get_mask_card(number, new_string):
+def test_get_mask_card(number: str, new_string: str) -> None:
     assert get_mask_card(number) == new_string
 
 
@@ -26,5 +25,5 @@ def test_get_mask_card(number, new_string):
         ("73654108430135874305", "**4305"),
     ],
 )
-def test_mask_account(number, new_string):
+def test_mask_account(number: str, new_string: str) -> None:
     assert get_mask_account(number) == new_string

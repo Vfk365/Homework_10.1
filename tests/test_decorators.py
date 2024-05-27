@@ -1,6 +1,6 @@
 import pytest
 
-from src.decorators import log, decorator, wrapper
+from src.decorators import log
 
 def test_log():
-    assert 
+    assert log

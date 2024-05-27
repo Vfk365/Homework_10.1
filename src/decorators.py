@@ -1,6 +1,7 @@
 import functools
 import sys
 from typing import Any, Callable, Optional
+from functools import wraps
 
 
 def log(filename: Optional[str] = None) -> Callable:
@@ -11,7 +12,7 @@ def log(filename: Optional[str] = None) -> Callable:
         def wrapper(*args: Any, **kwargs: Any) -> Any:
             try:
                 result = func(*args, **kwargs)
-                message = f"{func.__name__} ok\n"
+                message = f"{func.__name__} ok. Result: {result}\n"
                 if filename:
                     with open(filename, "a") as file:
                         file.write(message)

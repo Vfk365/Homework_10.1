@@ -17,7 +17,7 @@ def transaction_descriptions(transactions: Iterable[dict]) -> Iterator[str]:
     и возвращает итератор, который выдает описание каждой операции
      по очереди"""
     for transaction in transactions:
-        yield transaction["discription"]
+        yield transaction["description"]
 
 
 def card_number_generator(start: int, stop: int) -> Iterator[str]:
@@ -30,11 +30,11 @@ def card_number_generator(start: int, stop: int) -> Iterator[str]:
         string_to_return = ""
         block_counter = 0
 
-    for digit in number:
-        block_counter += 1
-        if block_counter <= 4:
-            string_to_return += digit
-        else:
-            string_to_return += "" + digit
-            block_counter = 1
-    yield string_to_return
+        for digit in number:
+            block_counter += 1
+            if block_counter <= 4:
+                string_to_return += digit
+            else:
+                string_to_return += " " + digit
+                block_counter = 1
+        yield string_to_return

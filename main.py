@@ -1,5 +1,7 @@
 from src.generators import transaction_descriptions, card_number_generator, filter_by_currency
 from src.decorators import log
+from typing import Union
+
 
 transactions = (
     [
@@ -81,6 +83,7 @@ transactions = (
     ]
 )
 
+
 usd_transactions = filter_by_currency(transactions, "USD")
 for _ in range(3):
     print(next(usd_transactions)["id"])
@@ -94,7 +97,8 @@ for card_number in card_number_generator(1, 5):
 
 
 @log(filename="mylog.txt")
-def my_function(x, y):
+def my_function(x: int, y: int) -> int:
+    """Функция вызова декоратора с файлом сохранения 'mylog.txt'."""
     return x + y
 
 
@@ -102,8 +106,28 @@ my_function(1, 2)
 
 
 @log(filename="mylog.txt")
-def my_function(x, y):
-    return x // y
+def my_function_error(x: int, y: int) -> Union[int, float, None]:
+    """Функция вызова декоратора с ошибкой и сохранения вывода в файл 'mylog.txt'."""
+    return x / y
 
 
-my_function(8, 2)
+my_function_error(0, 5)
+
+
+@log()
+def my_function_log_not_filename(x: int, y: int) -> Union[int, float, None]:
+    """Функция вызова декоратора без файла сохранения и вывод в консоль."""
+    return x / y
+
+
+my_function_log_not_filename(4, 2)
+
+
+# Функция вызова декоратора с ошибкой без файла сохранения и вывод в консоль.
+@log()
+def my_function_log_not_filename_error(x: int, y: int) -> Union[int, float, None]:
+    """Функция вызова декоратора с ошибкой без файла сохранения и вывод в консоль."""
+    return x / y
+
+
+my_function_log_not_filename_error(0, 3)

@@ -5,6 +5,7 @@ from typing import Any, Callable, Optional
 
 def log(filename: Optional[str] = None) -> Callable:
     """Декоратор log, который логирует вызов функции и ёё результат в файл или консоль."""
+
     def decorator(func: Callable) -> Callable:
         @functools.wraps(func)
         def wrapper(*args: Any, **kwargs: Any) -> Any:
@@ -25,5 +26,7 @@ def log(filename: Optional[str] = None) -> Callable:
                 else:
                     print(message, file=sys.stderr)
                 raise
+
         return wrapper
+
     return decorator

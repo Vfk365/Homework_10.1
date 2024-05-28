@@ -1,9 +1,9 @@
 """Модуль генератора для обработки массивов транзакций"""
 
-from typing import Iterable, Iterator
+from typing import Generator, Iterator
 
 
-def filter_by_currency(transactions: Iterable[dict], currency_code: str) -> Iterator[dict]:
+def filter_by_currency(transactions: list[dict], currency_code: str) -> Iterator[dict]:
     """Функция принимает список словарей с банковскими операциями
     и возращает итератор который выдаёт по очереди операции в которых
      указана заданная валюта."""
@@ -12,7 +12,7 @@ def filter_by_currency(transactions: Iterable[dict], currency_code: str) -> Iter
             yield transaction
 
 
-def transaction_descriptions(transactions: Iterable[dict]) -> Iterator[str]:
+def transaction_descriptions(transactions: list[dict]) -> Generator:
     """Функция принимает список словарей с банковскими операциями
     и возвращает итератор, который выдает описание каждой операции
      по очереди"""
@@ -20,10 +20,9 @@ def transaction_descriptions(transactions: Iterable[dict]) -> Iterator[str]:
         yield transaction["description"]
 
 
-def card_number_generator(start: int, stop: int) -> Iterator[str]:
+def card_number_generator(start: int, stop: int) -> Generator:
     """Генератор намеров банковских карт в формате ХХХХ ХХХХ ХХХХ ХХХХ
     Диапазоны передаются как параметры генератора."""
-    global block_counter, number, string_to_return
     for num in range(start, stop + 1):
         number = "0" * (16 - len(str(num))) + str(num)
 

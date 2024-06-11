@@ -103,7 +103,7 @@ from src.external_api import convert_to_rub
 # my_function_log_not_filename_error(0, 3)
 
 
-transactions = data_transactions('../data/operations.json')
+transactions = data_transactions("../data/operations.json")
 
 for transaction in transactions:
     rub_amount = convert_to_rub(transaction)

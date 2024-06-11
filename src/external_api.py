@@ -25,4 +25,3 @@ def convert_to_rub(transaction: dict) -> Any:
             return 0.0
     else:
         return 0.0
-

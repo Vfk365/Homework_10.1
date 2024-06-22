@@ -1,10 +1,10 @@
 import os
 import unittest
 from unittest.mock import MagicMock, Mock, patch
+
 import requests
 from dotenv import load_dotenv
 from src.external_api import convert_to_rub
-
 
 load_dotenv(".env")
 

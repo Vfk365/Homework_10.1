@@ -1,9 +1,9 @@
 from typing import Union
+
 from src.decorators import log
+from src.external_api import convert_to_rub
 from src.generators import card_number_generator, filter_by_currency, transaction_descriptions
 from src.utils import data_transactions
-from src.external_api import convert_to_rub
-
 
 # transactions = [
 #     {

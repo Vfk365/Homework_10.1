@@ -1,9 +1,12 @@
 import json
+import os
 from typing import Dict, List
 
-from logger import set_logger
+from src.logger import set_logger
 
-logger = set_logger()
+current_dir = os.path.dirname(os.path.abspath(__file__))
+file_path_1 = os.path.join(current_dir, "../logs", "utils.log")
+logger = set_logger("utils", file_path_1)
 
 
 def data_transactions(file_path: str) -> List[Dict]:

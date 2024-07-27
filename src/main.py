@@ -1,9 +1,13 @@
 # from typing import Union
+import os
 
 # from src.decorators import log
-from src.external_api import convert_to_rub
+# from src.external_api import convert_to_rub
+from src.read_transactions_csv import get_data_transactions
+from src.read_transactions_excel import get_data_transactions_excel
+
 # from src.generators import card_number_generator, filter_by_currency, transaction_descriptions
-from src.utils import data_transactions
+# from src.utils import data_transactions
 
 # transactions = [
 #     {
@@ -102,9 +106,28 @@ from src.utils import data_transactions
 #
 # my_function_log_not_filename_error(0, 3)
 
+#
+# transactions = data_transactions("../data/operations.json")
+#
+# for transaction in transactions:
+#     rub_amount = convert_to_rub(transaction)
+#     print(f"Transaction amount in RUB: {rub_amount}")
 
-transactions = data_transactions("../data/operations.json")
+current_dir = os.path.dirname(os.path.abspath(__file__))
+file_path = os.path.join(current_dir, "../data", "transactions.csv")
 
-for transaction in transactions:
-    rub_amount = convert_to_rub(transaction)
-    print(f"Transaction amount in RUB: {rub_amount}")
+transactions_csv = get_data_transactions(file_path)
+print(transactions_csv)
+
+print(
+    """
+
+
+"""
+)  # Для разделения выводов функций
+
+current_dir = os.path.dirname(os.path.abspath(__file__))
+file_path_2 = os.path.join(current_dir, "../data", "transactions_excel.xlsx")
+
+transactions_excel = get_data_transactions_excel(file_path_2)
+print(transactions_excel)

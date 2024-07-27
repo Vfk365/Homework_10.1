@@ -1,6 +1,10 @@
-from logger import set_logger_masks
+import os
 
-logger = set_logger_masks()
+from src.logger import set_logger
+
+current_dir = os.path.dirname(os.path.abspath(__file__))
+file_path_1 = os.path.join(current_dir, "../logs", "masks.log")
+logger = set_logger("masks", file_path_1)
 
 
 def get_mask_card(number: str) -> str:

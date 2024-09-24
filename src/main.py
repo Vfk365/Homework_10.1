@@ -1,8 +1,6 @@
 import datetime
 import os
 from typing import Any
-
-import pandas as pd
 from src.processing import get_date_sorted, get_dictionary_key
 from src.utils import data_transactions, filter_transactions_by_description, get_transactions_filter_by_rub
 from src.widget import mask_account_cart
